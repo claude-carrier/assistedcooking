@@ -1,0 +1,7 @@
+{
+  "name": "assisted-cooking",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
