@@ -1,6 +1,6 @@
 {
-  "appId": "io.ionic.starter",
-  "appName": "assisted-cooking",
+  "appId": "com.assistedcooking.app",
+  "appName": "AssistedCooking",
   "bundledWebRuntime": false,
   "npmClient": "npm",
   "webDir": "www"

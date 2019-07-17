@@ -1,9 +1,24 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>start</ion-title>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-button (click)="logout()">
+        <ion-icon slot="icon-only" name="log-out"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>Start Page</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
+  <ion-list *ngIf="favorites">
+    <!-- Item with an avatar on the left and button on the right -->
+    <ion-item *ngFor="let fav of (favorites)">
+      <ion-avatar item-start>
+        <img [src]="'http://dev.assistedcooking.com' + fav.recipe_img" >
+      </ion-avatar>
+      {{ fav.recipe_name }}
+      <ion-button (click)="openBlank(fav.recipe_url)">Cook</ion-button>
+    </ion-item>
 
+  </ion-list>
 </ion-content>

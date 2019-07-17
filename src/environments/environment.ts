@@ -3,7 +3,11 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  authTokenName: 'dev_auth_token',
+  acAPIurl: 'http://dev.assistedcooking.com/cfcs/mobile/ACAPI.cfc',
+  acBaseUrl: 'http://dev.assistedcooking.com',
+  whitelist: ['dev.assistedcooking.com', 'http://dev.assistedcooking.com']
 };
 
 /*
