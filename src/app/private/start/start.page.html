@@ -10,15 +10,46 @@
 </ion-header>
 
 <ion-content>
+    <ion-list *ngIf="menuItem">
+      <ion-list-header color="secondary">
+          <ion-label>Menu Item</ion-label>
+        </ion-list-header>
+        <!-- Item with an avatar on the left and button on the right -->
+      <ion-item *ngFor="let rec of (menuItem)">
+        <ion-avatar slot="start">
+          <img [src]="'http://dev.assistedcooking.com' + rec.recipe_img" >
+        </ion-avatar>
+        {{ rec.recipe_name }}
+        <ion-button slot="end" (click)="openBlank(rec.recipe_url)">Cook</ion-button>
+      </ion-item>
+    </ion-list>
+    
   <ion-list *ngIf="favorites">
+    <ion-list-header color="secondary">
+      <ion-label>Favorites</ion-label>
+    </ion-list-header>
     <!-- Item with an avatar on the left and button on the right -->
     <ion-item *ngFor="let fav of (favorites)">
-      <ion-avatar item-start>
+      <ion-avatar slot="start">
         <img [src]="'http://dev.assistedcooking.com' + fav.recipe_img" >
       </ion-avatar>
       {{ fav.recipe_name }}
-      <ion-button (click)="openBlank(fav.recipe_url)">Cook</ion-button>
+      <ion-button slot="end" (click)="openBlank(fav.recipe_url)">Cook</ion-button>
     </ion-item>
-
   </ion-list>
+
+  <ion-list *ngIf="groceryList">
+      <ion-list-header color="secondary">
+        <ion-label>Go Shopping</ion-label>
+      </ion-list-header>
+      <!-- Item with an avatar on the left and button on the right -->
+      <ion-item *ngFor="let gl of (groceryList)">
+        <ion-avatar slot="start">
+          <img [src]="'http://dev.assistedcooking.com' + gl.gl_img" >
+        </ion-avatar>
+        Grocery List
+        <ion-button slot="end" (click)="openBlank(gl.gl_url)">Open</ion-button>
+      </ion-item>
+    </ion-list>
+  
 </ion-content>

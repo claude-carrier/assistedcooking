@@ -13,12 +13,11 @@ import { environment } from 'src/environments/environment';
 export class StartPage implements OnInit {
   baseUrl = environment.acBaseUrl;
 
-  startPageData = '';
   status = '';
   msg = '';
   favorites = [];
-  groceryList = '';
-  menuItem = [];
+  groceryList = null;
+  menuItem = null;
 
   constructor(private authService: AuthService, private iab: InAppBrowser) { }
 
@@ -33,19 +32,28 @@ export class StartPage implements OnInit {
       console.log(rawdata);
 
       let obj = JSON.parse(JSON.parse(rawdata));
-      // let obj2 = JSON.parse(obj);
-      console.log(obj, typeof(obj));
-      // console.log(obj2, typeof(obj2));
-      console.log(obj['GROCERYLIST']);
-      console.log(obj.GROCERYLIST);
+      // console.log(obj, typeof(obj));
 
-      // this.data = rawdata;
-      this.startPageData = obj;
       this.status = obj.STATUS;
+      console.log('Status: ', this.status);
+
       this.msg = obj.MSG;
-      this.favorites = obj.FAVORITES;
-      this.groceryList = obj.GROCERYLIST;
-      this.menuItem = obj.MENUITEM;
+      console.log('Msg: ', this.msg);
+
+      if (obj.FAVORITES.length > 0) {
+        this.favorites = obj.FAVORITES;
+      }
+      console.log('Favorites: ', this.favorites);
+
+      if (obj.GROCERYLIST.gl_img) {
+        this.groceryList = [obj.GROCERYLIST];
+      }
+      console.log('Grocery List: ', this.groceryList);
+
+      if (obj.MENUITEM.recipe_img) {
+        this.menuItem = [obj.MENUITEM];
+      }
+      console.log('Menu Item: ', this.menuItem);
     });
   }
 
