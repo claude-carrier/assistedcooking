@@ -29,9 +29,10 @@ export class StartPage implements OnInit {
     this.authService.getStartPageData().subscribe(res => {
 
       let rawdata =  JSON.stringify(res);
-      console.log(rawdata);
+      console.log('Raw Data: ', rawdata);
 
-      let obj = JSON.parse(JSON.parse(rawdata));
+      let obj = JSON.parse(rawdata);
+      //let obj = JSON.parse(JSON.parse(rawdata));
       // console.log(obj, typeof(obj));
 
       this.status = obj.STATUS;
@@ -62,6 +63,6 @@ export class StartPage implements OnInit {
   }
 
   openBlank(url) {
-    this.iab.create(this.baseUrl + url, `_blank`);
+    this.iab.create(this.baseUrl + url, `_blank`, 'location=no,zoom=no');
   }
 }
