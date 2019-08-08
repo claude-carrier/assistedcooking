@@ -29,32 +29,32 @@ export class StartPage implements OnInit {
     this.authService.getStartPageData().subscribe(res => {
 
       let rawdata =  JSON.stringify(res);
-      console.log('Raw Data: ', rawdata);
+      // console.log('Raw Data: ', rawdata);
 
       let obj = JSON.parse(rawdata);
       //let obj = JSON.parse(JSON.parse(rawdata));
       // console.log(obj, typeof(obj));
 
       this.status = obj.STATUS;
-      console.log('Status: ', this.status);
+      // console.log('Status: ', this.status);
 
       this.msg = obj.MSG;
-      console.log('Msg: ', this.msg);
+      // console.log('Msg: ', this.msg);
 
       if (obj.FAVORITES.length > 0) {
         this.favorites = obj.FAVORITES;
       }
-      console.log('Favorites: ', this.favorites);
+      // console.log('Favorites: ', this.favorites);
 
       if (obj.GROCERYLIST.gl_img) {
         this.groceryList = [obj.GROCERYLIST];
       }
-      console.log('Grocery List: ', this.groceryList);
+      // console.log('Grocery List: ', this.groceryList);
 
       if (obj.MENUITEM.recipe_img) {
         this.menuItem = [obj.MENUITEM];
       }
-      console.log('Menu Item: ', this.menuItem);
+      // console.log('Menu Item: ', this.menuItem);
     });
   }
 

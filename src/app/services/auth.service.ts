@@ -7,6 +7,7 @@ import { Storage } from '@ionic/storage';
 import { Platform, AlertController } from '@ionic/angular';
 import { environment } from 'src/environments/environment';
 import { JwtHelperService } from '@auth0/angular-jwt';
+import { RouterModule } from '@angular/router';
 
 const TOKEN_KEY =  environment.authTokenName;
 
@@ -19,8 +20,12 @@ export class AuthService {
   url = environment.acAPIurl;    // found in /src/environments/environment.*.ts (both files)
   user = null;
 
-  constructor(private  http: HttpClient, private helper: JwtHelperService, private  storage: Storage, private plt: Platform,
-              private alertController: AlertController) {
+  constructor(private http: HttpClient,
+              private helper: JwtHelperService,
+              private storage: Storage,
+              private plt: Platform,
+              private alertController: AlertController
+            ) {
     this.plt.ready().then(() => {
       this.checkToken();
     });
@@ -32,8 +37,8 @@ export class AuthService {
         let decoded = this.helper.decodeToken(token);
         let isExpired = this.helper.isTokenExpired(token);
 
-          console.log('checkToken() decoded: ', decoded);
-          console.log('checkToken() isExpired: ', isExpired);
+        // console.log('checkToken() decoded: ', decoded);
+        // console.log('checkToken() isExpired: ', isExpired);
 
         if (!isExpired) {
           this.user = decoded;
@@ -56,8 +61,8 @@ export class AuthService {
           let decoded = this.helper.decodeToken(token);
           let isExpired = this.helper.isTokenExpired(token);
 
-          console.log('decoded: ', decoded);
-          console.log('isExpired: ', isExpired);
+          // console.log('decoded: ', decoded);
+          // console.log('isExpired: ', isExpired);
 
           if (isExpired || decoded.authenticated === 'False') {
             this.showAlert('Warning', decoded.msg);

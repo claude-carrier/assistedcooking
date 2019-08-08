@@ -12,6 +12,8 @@ import { Router } from '@angular/router';
   templateUrl: 'app.component.html'
 })
 export class AppComponent {
+  showSplash = true;
+
   constructor(
     private platform: Platform,
     private splashScreen: SplashScreen,
@@ -23,12 +25,14 @@ export class AppComponent {
   }
 
   initializeApp() {
+    // console.log('initializeApp()');
+
     this.platform.ready().then(() => {
       this.statusBar.styleDefault();
       this.splashScreen.hide();
 
       this.authService.authState.subscribe(state => {
-        console.log('Auth changed: ', state);
+        // console.log('initializeApp() Auth state: ', state);
 
         if (state) {
           this.router.navigate(['private', 'start']);
