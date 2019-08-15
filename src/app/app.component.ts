@@ -7,6 +7,8 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { AuthService } from './services/auth.service';
 import { Router } from '@angular/router';
 
+import { timer } from 'rxjs';
+
 @Component({
   selector: 'app-root',
   templateUrl: 'app.component.html'
@@ -30,6 +32,8 @@ export class AppComponent {
     this.platform.ready().then(() => {
       this.statusBar.styleDefault();
       this.splashScreen.hide();
+
+      timer(3000).subscribe(() => this.showSplash = false);
 
       this.authService.authState.subscribe(state => {
         // console.log('initializeApp() Auth state: ', state);
