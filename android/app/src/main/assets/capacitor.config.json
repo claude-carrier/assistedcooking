@@ -1,6 +1,6 @@
 {
-  "appId": "com.assistedcooking.app",
-  "appName": "AssistedCooking",
+  "appId": "com.assistedcooking.mobile_app",
+  "appName": "Assisted Cooking",
   "bundledWebRuntime": false,
   "npmClient": "npm",
   "webDir": "www"
